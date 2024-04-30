@@ -1,2 +1,2 @@
 # projetStage
- Plateforme d'éducation en ligne
+ Plateforme de cours en ligne
