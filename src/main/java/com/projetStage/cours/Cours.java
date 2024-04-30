@@ -1,9 +1,12 @@
 package com.projetStage.cours;
 
+import java.util.Set;
+
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import com.projetStage.auditModel.AuditModel;
+import com.projetStage.categorie.Categorie;
 import com.projetStage.enseignant.Enseignant;
 
 import jakarta.persistence.Column;
@@ -12,6 +15,8 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -45,8 +50,13 @@ private float prixCours;
 @JoinColumn(name = "EnseignantId")
 private Enseignant enseignant;
 
-
-
+@ManyToMany
+@JoinTable(
+		name = "categorie_cours",
+		joinColumns = @JoinColumn(name = "coursId"),
+		inverseJoinColumns = @JoinColumn(name = "categorieId")
+		)
+private Set<Categorie> categories;
 	
 	
 }

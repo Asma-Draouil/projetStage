@@ -1,9 +1,15 @@
 package com.projetStage.message;
 
-import com.projetStage.auditModel.AuditModel;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
+import com.projetStage.auditModel.AuditModel;
+import com.projetStage.utilisateur.Utilisateur;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +28,10 @@ public class Message extends AuditModel {/**
 
 @NotEmpty
 private String contenuMessage;	
-	
+
+@ManyToOne	(fetch = FetchType.LAZY)
+@OnDelete(action = OnDeleteAction.NO_ACTION)
+@JoinColumn(name = "utilisateurId")
+private Utilisateur utilisateur;
 
 }
