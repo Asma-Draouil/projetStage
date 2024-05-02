@@ -1,5 +1,8 @@
 package com.projetStage.cours;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.hibernate.annotations.OnDelete;
@@ -7,8 +10,14 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import com.projetStage.auditModel.AuditModel;
 import com.projetStage.categorie.Categorie;
+import com.projetStage.certificat.Certificat;
+import com.projetStage.commentaire.Commentaire;
 import com.projetStage.enseignant.Enseignant;
+import com.projetStage.etudiant.Etudiant;
+import com.projetStage.evaluation.Evaluation;
+import com.projetStage.module.Module;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -18,6 +27,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -50,13 +61,35 @@ private float prixCours;
 @JoinColumn(name = "EnseignantId")
 private Enseignant enseignant;
 
-@ManyToMany
-@JoinTable(
-		name = "categorie_cours",
-		joinColumns = @JoinColumn(name = "coursId"),
-		inverseJoinColumns = @JoinColumn(name = "categorieId")
+@ManyToMany(mappedBy = "cours")
+private Set<Categorie> categories = new HashSet<>();
+
+@OneToOne(cascade = CascadeType.ALL)
+@JoinColumn(name = "certificatId")
+private Certificat certificat;	
+
+@OneToMany(mappedBy = "cours")
+private List<Commentaire> commentaires = new ArrayList<>();
+
+
+@OneToMany(mappedBy = "cours")
+private Set<Module> modules = new HashSet<>();
+
+@OneToMany(mappedBy = "cours")
+private List<Evaluation> evaluations = new ArrayList<>();
+
+@ManyToMany(fetch = FetchType.LAZY,
+cascade = {
+		CascadeType.PERSIST,
+		CascadeType.MERGE
+}
 		)
-private Set<Categorie> categories;
-	
-	
+@JoinTable(
+		name = "cours_etudiant",
+		joinColumns = @JoinColumn(name = "coursId"),
+		inverseJoinColumns = @JoinColumn(name = "etudiantId")
+		)
+private Set<Etudiant> etudiants = new HashSet<>();
+
+
 }

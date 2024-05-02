@@ -2,7 +2,7 @@ package com.projetStage.quiz;
 
 import java.util.Date;
 
-import com.projetStage.module.Module;
+import com.projetStage.auditModel.AuditModel;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,7 +17,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Quiz extends Module {/**
+public class Quiz extends AuditModel {/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;

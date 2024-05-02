@@ -2,11 +2,15 @@ package com.projetStage.enseignant;
 
 
 
+import java.util.HashSet;
+import java.util.Set;
+
+import com.projetStage.cours.Cours;
 import com.projetStage.utilisateur.Utilisateur;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,5 +33,6 @@ private String profession;
 private String specialite;
 private String description;
 
-
+@OneToMany(mappedBy = "enseignant")
+private Set<Cours> cours = new HashSet<>();
 }

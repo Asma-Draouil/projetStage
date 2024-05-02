@@ -1,11 +1,16 @@
 package com.projetStage.categorie;
+import java.util.HashSet;
 import java.util.Set;
 
 import com.projetStage.auditModel.AuditModel;
 import com.projetStage.cours.Cours;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,8 +30,19 @@ public class Categorie extends AuditModel {/**
 @Column(nullable = false, unique = true)	
 private String nomCategorie;	
 
-@ManyToMany(mappedBy = "categories")
-private Set<Cours> cours;
+@ManyToMany(
+		fetch = FetchType.LAZY,
+		cascade = {
+				CascadeType.PERSIST,
+				CascadeType.MERGE
+		}
+		)
+@JoinTable(
+		name = "categorie_cours",
+		joinColumns = @JoinColumn(name = "categorieId"),
+		inverseJoinColumns = @JoinColumn(name = "coursId")
+		)
+private Set<Cours> cours = new HashSet<>();
 
 
 }
