@@ -30,6 +30,10 @@ public class Etudiant extends Utilisateur {/**
 private long infoCardCredit;
 @Enumerated(EnumType.STRING)
 private TypeEtudiant typeEtudiant;
+private String universite, niveauScolaire;
+private String societe, experience;
+private String profession, domaine;
+
 
 @ManyToMany(mappedBy = "etudiants")
 private Set<Cours> cours = new HashSet<>();

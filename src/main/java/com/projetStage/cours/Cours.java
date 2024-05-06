@@ -46,7 +46,7 @@ public class Cours extends AuditModel {/**
 
 @Column(nullable = false, unique = true)
 private String titreCours;
-private String descriptionCours;
+private String descriptionCours,planCours;
 @Column(nullable = false)
 private int nombreHeure;
 @Enumerated(EnumType.STRING)
