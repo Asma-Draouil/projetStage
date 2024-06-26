@@ -6,8 +6,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import com.projetStage.auditModel.AuditModel;
-import com.projetStage.module.Module;
-
+import com.projetStage.chapitre.Chapitre;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
@@ -32,6 +31,6 @@ private Date duree;
 
 @ManyToOne(fetch = FetchType.LAZY)
 @OnDelete(action = OnDeleteAction.CASCADE)
-@JoinColumn(name = "moduleId")
-private Module module;
+@JoinColumn(name = "chapitreId")
+private Chapitre chapitre;
 }

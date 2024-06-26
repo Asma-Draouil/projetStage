@@ -11,12 +11,11 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.projetStage.auditModel.AuditModel;
 import com.projetStage.categorie.Categorie;
 import com.projetStage.certificat.Certificat;
+import com.projetStage.chapitre.Chapitre;
 import com.projetStage.commentaire.Commentaire;
 import com.projetStage.enseignant.Enseignant;
 import com.projetStage.etudiant.Etudiant;
 import com.projetStage.evaluation.Evaluation;
-import com.projetStage.module.Module;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -73,7 +72,7 @@ private List<Commentaire> commentaires = new ArrayList<>();
 
 
 @OneToMany(mappedBy = "cours")
-private Set<Module> modules = new HashSet<>();
+private Set<Chapitre> chapitres = new HashSet<>();
 
 @OneToMany(mappedBy = "cours")
 private List<Evaluation> evaluations = new ArrayList<>();

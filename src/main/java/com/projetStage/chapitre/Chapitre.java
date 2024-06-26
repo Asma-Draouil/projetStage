@@ -1,4 +1,4 @@
-package com.projetStage.module;
+package com.projetStage.chapitre;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -34,14 +34,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name="type", discriminatorType = DiscriminatorType.STRING)
-public class Module extends AuditModel {/**
+public class Chapitre extends AuditModel {/**
 	 * , 
 	 */
 	private static final long serialVersionUID = 1L;
 	
 @NotNull	
-private String titreModule;
-private String descriptionModule;
+private String titreChapitre;
+private String descriptionChapitre;
 @NotNull
 private int nombreHeure;
 	
@@ -50,14 +50,14 @@ private int nombreHeure;
 @JoinColumn(name = "coursId")
 private Cours cours;
 	
-@OneToMany(mappedBy = "module")
+@OneToMany(mappedBy = "chapitre")
 private Set<Meeting> meetings = new HashSet<>();
 
 
-@OneToMany(mappedBy = "module")
+@OneToMany(mappedBy = "chapitre")
 private Set<Video> videos = new HashSet<>();
 
-@OneToMany(mappedBy = "module")
+@OneToMany(mappedBy = "chapitre")
 private Set<Audio> audios = new HashSet<>();
 
 
