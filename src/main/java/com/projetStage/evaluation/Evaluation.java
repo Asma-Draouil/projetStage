@@ -25,7 +25,11 @@ public class Evaluation extends AuditModel {/**
 	 */
 	private static final long serialVersionUID = 1L;
 	
-private String contenuEvaluation;	
+private String contenuEvaluation;
+
+private float note;
+
+private String remarque;
 
 @ManyToOne(fetch = FetchType.LAZY)
 @OnDelete(action = OnDeleteAction.CASCADE)

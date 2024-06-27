@@ -45,13 +45,19 @@ public class Cours extends AuditModel {/**
 
 @Column(nullable = false, unique = true)
 private String titreCours;
+
 private String descriptionCours,planCours;
+
 @Column(nullable = false)
 private int nombreHeure;
+
 @Enumerated(EnumType.STRING)
 private NiveauCours niveauCours;
+
 private String prerequis;
+
 private int nombreParticipants;
+
 @Column(nullable = false)
 private float prixCours;
 

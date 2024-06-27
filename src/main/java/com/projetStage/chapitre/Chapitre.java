@@ -9,6 +9,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.projetStage.audio.Audio;
 import com.projetStage.auditModel.AuditModel;
 import com.projetStage.cours.Cours;
+import com.projetStage.document.Document;
 import com.projetStage.meeting.Meeting;
 import com.projetStage.video.Video;
 
@@ -60,5 +61,6 @@ private Set<Video> videos = new HashSet<>();
 @OneToMany(mappedBy = "chapitre")
 private Set<Audio> audios = new HashSet<>();
 
-
+@OneToMany(mappedBy = "chapitre")
+private Set<Document> documents = new HashSet<>();
 }

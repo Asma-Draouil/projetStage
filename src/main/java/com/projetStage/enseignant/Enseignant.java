@@ -29,9 +29,13 @@ public class Enseignant extends Utilisateur {
 	
 @Column(nullable = false)
 private String profession;
+
 @Column(nullable = false)
 private String specialite;
+
 private String description;
+
+private int experience;
 
 @OneToMany(mappedBy = "enseignant")
 private Set<Cours> cours = new HashSet<>();

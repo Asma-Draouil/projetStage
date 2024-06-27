@@ -5,8 +5,6 @@ import java.util.Set;
 
 import com.projetStage.cours.Cours;
 import com.projetStage.utilisateur.Utilisateur;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -26,16 +24,20 @@ public class Etudiant extends Utilisateur {/**
 	 */
 	private static final long serialVersionUID = 1L;
 	
-@Column(nullable = false, unique = true)	
-private long infoCardCredit;
+
 @Enumerated(EnumType.STRING)
 private TypeEtudiant typeEtudiant;
+
 private String universite, niveauScolaire;
+
 private String societe, experience;
+
 private String profession, domaine;
 
 
 @ManyToMany(mappedBy = "etudiants")
 private Set<Cours> cours = new HashSet<>();
+
+
 
 }

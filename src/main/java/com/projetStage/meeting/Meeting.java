@@ -7,12 +7,10 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import com.projetStage.auditModel.AuditModel;
 import com.projetStage.chapitre.Chapitre;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,9 +26,11 @@ public class Meeting extends AuditModel {/**
 	 */
 	private static final long serialVersionUID = 1L;
 
-@Column(nullable = false, unique = true)	
+	
 private String titreMeeting;
-@NotNull
+
+private String description;
+
 private Date dateDebut, dateFin;
 
 @ManyToOne(fetch = FetchType.LAZY)	
