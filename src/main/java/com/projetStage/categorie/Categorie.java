@@ -6,7 +6,7 @@ import com.projetStage.auditModel.AuditModel;
 import com.projetStage.cours.Cours;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
@@ -27,8 +27,10 @@ public class Categorie extends AuditModel {/**
 	 */
 	private static final long serialVersionUID = 1L;
 	
-@Column(nullable = false, unique = true)	
-private String titreCategorie;	
+	
+private String titre;	
+
+private String description;
 
 @ManyToMany(
 		fetch = FetchType.LAZY,

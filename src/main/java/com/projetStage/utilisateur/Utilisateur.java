@@ -2,6 +2,7 @@ package com.projetStage.utilisateur;
 
 import com.projetStage.adresse.Adresse;
 import com.projetStage.auditModel.AuditModel;
+import com.projetStage.evaluation.Evaluation;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -35,21 +36,27 @@ public abstract class Utilisateur extends AuditModel {/**
 	 */
 	private static final long serialVersionUID = 1L;
 	
-@NotNull
+
 private String nom,prenom;
-@NotNull
+
 private int age;
-@NotNull
+
 private String telephone;
-@Column(unique = true)
-@Email
+
 private String email;
-@NotEmpty
+
 private String motDePasse;
+
 private StatutConnexion statutConnexion;
+
+private Roles roles;
 
 @OneToOne(cascade = CascadeType.ALL)
 @JoinColumn(name = "adresseId")
 private Adresse adresse;
+
+@OneToOne(cascade = CascadeType.ALL)
+@JoinColumn(name = "evaluationId")
+private Evaluation evaluation;
 
 }

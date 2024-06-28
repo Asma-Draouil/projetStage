@@ -3,12 +3,14 @@ package com.projetStage.etudiant;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.projetStage.certificat.Certificat;
 import com.projetStage.cours.Cours;
 import com.projetStage.utilisateur.Utilisateur;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,6 +40,6 @@ private String profession, domaine;
 @ManyToMany(mappedBy = "etudiants")
 private Set<Cours> cours = new HashSet<>();
 
-
-
+@OneToMany(mappedBy = "etudiant")
+private Set<Certificat> certificats = new HashSet<>();
 }

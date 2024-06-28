@@ -27,7 +27,7 @@ public class Meeting extends AuditModel {/**
 	private static final long serialVersionUID = 1L;
 
 	
-private String titreMeeting;
+private String titre;
 
 private String description;
 
