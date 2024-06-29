@@ -34,7 +34,13 @@ private String contenu;
 
 @ManyToOne	(fetch = FetchType.LAZY)
 @OnDelete(action = OnDeleteAction.NO_ACTION)
-@JoinColumn(name = "utilisateurId")
-private Utilisateur utilisateur;
+@JoinColumn(name = "emetteurId")
+private Utilisateur emetteur;
+
+
+@ManyToOne	(fetch = FetchType.LAZY)
+@OnDelete(action = OnDeleteAction.NO_ACTION)
+@JoinColumn(name = "recepteurId")
+private Utilisateur recepteur;
 
 }

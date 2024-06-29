@@ -30,7 +30,11 @@ public class Certificat  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-private int id;
+private Integer id;
+	
+private String titre;
+
+private String description;
 
 private Date datOptention;
 	

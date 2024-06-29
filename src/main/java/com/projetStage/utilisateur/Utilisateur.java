@@ -1,21 +1,22 @@
 package com.projetStage.utilisateur;
 
+import java.util.ArrayList;
+import java.util.List;
 import com.projetStage.adresse.Adresse;
 import com.projetStage.auditModel.AuditModel;
 import com.projetStage.evaluation.Evaluation;
+import com.projetStage.message.Message;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
+
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -58,5 +59,12 @@ private Adresse adresse;
 @OneToOne(cascade = CascadeType.ALL)
 @JoinColumn(name = "evaluationId")
 private Evaluation evaluation;
+
+
+@OneToMany(mappedBy = "emetteur")
+private List<Message> messagesEmetteur = new ArrayList<>();
+
+@OneToMany(mappedBy = "recepteur")
+private List<Message> messagesRecepteur = new ArrayList<>();
 
 }
