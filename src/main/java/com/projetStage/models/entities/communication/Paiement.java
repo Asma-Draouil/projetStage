@@ -6,6 +6,8 @@ import com.projetStage.models.entities.communication.enums.ModePaiement;
 import com.projetStage.models.entities.communication.enums.TypePaiement;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,10 +32,10 @@ private Date datePaiement;
 
 private Date delai;
 
-
+@Enumerated(EnumType.STRING)
 private TypePaiement typePaiement;
 
-
+@Enumerated(EnumType.STRING)
 private ModePaiement modePaiement;
 
 }

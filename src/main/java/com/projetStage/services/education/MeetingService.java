@@ -1,13 +1,14 @@
 package com.projetStage.services.education;
 
 import java.util.List;
+import com.projetStage.models.dto.education.MeetingDto;
 
-import com.projetStage.models.entities.education.Meeting;
 
 public interface MeetingService {
-public void save(Meeting meeting);
-public Meeting findById(Integer id);
-public List<Meeting> findAll();
+	
+public void save(MeetingDto meetingDto);
+public MeetingDto findById(Integer id);
+public List<MeetingDto> findAll();
 public void deleteById(Integer id);
-public void deletell();
+public void deleteAll();
 }

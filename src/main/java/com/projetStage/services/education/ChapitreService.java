@@ -1,13 +1,14 @@
 package com.projetStage.services.education;
 
 import java.util.List;
+import com.projetStage.models.dto.education.ChapitreDto;
 
-import com.projetStage.models.entities.education.Chapitre;
 
 public interface ChapitreService {
-public void save(Chapitre chapitre);
-public Chapitre findById(Integer id);
-public List<Chapitre> findAll();
+	
+public void save(ChapitreDto chapitreDto);
+public ChapitreDto findById(Integer id);
+public List<ChapitreDto> findAll();
 public void deleteById(Integer id);
 public void deleteAll();	
 	
