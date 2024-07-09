@@ -7,11 +7,14 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import com.projetStage.models.BaseEntity;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -51,4 +54,8 @@ private Set<Audio> audios = new HashSet<>();
 
 @OneToMany(mappedBy = "chapitre")
 private Set<Document> documents = new HashSet<>();
+
+@OneToOne(cascade = CascadeType.ALL)
+@JoinColumn(name = "quizId")
+private Quiz quiz;
 }

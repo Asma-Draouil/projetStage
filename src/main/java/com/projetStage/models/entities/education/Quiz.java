@@ -5,6 +5,7 @@ import java.util.Date;
 import com.projetStage.models.BaseEntity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,5 +31,8 @@ private Date durée;
 private int score;
 
 private boolean estReussi;
+
+@OneToOne(mappedBy = "quiz")
+private Chapitre chapitre;
 
 }

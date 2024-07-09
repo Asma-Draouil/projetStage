@@ -9,6 +9,7 @@ import com.projetStage.models.entities.education.Audio;
 import com.projetStage.models.entities.education.Cours;
 import com.projetStage.models.entities.education.Document;
 import com.projetStage.models.entities.education.Meeting;
+import com.projetStage.models.entities.education.Quiz;
 import com.projetStage.models.entities.education.Video;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -49,4 +50,7 @@ public class ChapitreDto extends BaseEntityDto {
 	
 	@JsonIgnoreProperties
 	private Set<Document> documents = new HashSet<>();
+	
+	@JsonIgnoreProperties
+	private Quiz quiz;
 }

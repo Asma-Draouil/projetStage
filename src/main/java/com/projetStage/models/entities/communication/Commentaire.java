@@ -5,6 +5,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import com.projetStage.models.BaseEntity;
 import com.projetStage.models.entities.education.Cours;
+import com.projetStage.models.entities.utilisateurs.Utilisateur;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -27,12 +28,17 @@ public class Commentaire extends BaseEntity {/**
 	private static final long serialVersionUID = 1L;
 	
 @NotEmpty	
-private String contenuCommentaire;	
+private String contenu;	
 
 @ManyToOne(fetch = FetchType.LAZY)
 @OnDelete(action = OnDeleteAction.CASCADE)
 @JoinColumn(name = "coursId")
 private Cours cours;
+
+@ManyToOne(fetch = FetchType.LAZY)
+@OnDelete(action = OnDeleteAction.CASCADE)
+@JoinColumn(name = "utilisateurId")
+private Utilisateur utilisateur;
 
 
 }

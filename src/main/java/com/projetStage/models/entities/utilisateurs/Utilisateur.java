@@ -1,7 +1,11 @@
 package com.projetStage.models.entities.utilisateurs;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.projetStage.models.BaseEntity;
+import com.projetStage.models.entities.communication.Commentaire;
 import com.projetStage.models.entities.communication.Evaluation;
 import com.projetStage.models.entities.utilisateurs.enums.Roles;
 import com.projetStage.models.entities.utilisateurs.enums.StatutConnexion;
@@ -14,6 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -58,7 +63,8 @@ private Adresse adresse;
 @JoinColumn(name = "evaluationId")
 private Evaluation evaluation;
 
-
+@OneToMany(mappedBy = "utilisateur")
+List<Commentaire> commentaires = new ArrayList<>() ;
 
 
 }
