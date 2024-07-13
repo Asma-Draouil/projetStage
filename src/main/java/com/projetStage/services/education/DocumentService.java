@@ -1,13 +1,15 @@
 package com.projetStage.services.education;
 
 import java.util.List;
+import java.util.Optional;
 
-import com.projetStage.models.entities.education.Document;
+import com.projetStage.models.dto.education.DocumentDto;
+
 
 public interface DocumentService {
-public void save(Document document);
-public Document findById(Integer id);
-public List<Document> findAll();
+public DocumentDto save(DocumentDto documentDto);
+public Optional<DocumentDto> findById(Integer id);
+public List<DocumentDto> findAll();
 public void deleteById(Integer id);
 public void deleteAll();
 	
