@@ -1,7 +1,6 @@
 package com.projetStage.services.communication.impl;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -12,6 +11,7 @@ import com.projetStage.models.mappers.communication.PaiementMapper;
 import com.projetStage.repositories.communication.PaiementRepository;
 import com.projetStage.services.communication.PaiementService;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -28,9 +28,10 @@ public class PaiementServiceImpl implements PaiementService{
 	}
 
 	@Override
-	public Optional<PaiementDto> findById(Integer id) {
+	public PaiementDto findById(Integer id) {
 		
-		return paiementRepository.findById(id).map(PaiementMapper::convertToDto);
+		return paiementRepository.findById(id).map(PaiementMapper::convertToDto)
+				.orElseThrow(()-> new EntityNotFoundException("Aucun paiement trouvé avec l'ID : " +id));
 	}
 
 	@Override

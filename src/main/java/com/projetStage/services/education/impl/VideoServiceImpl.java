@@ -1,7 +1,6 @@
 package com.projetStage.services.education.impl;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -12,6 +11,7 @@ import com.projetStage.models.mappers.education.VideoMapper;
 import com.projetStage.repositories.education.VideoRepository;
 import com.projetStage.services.education.VideoService;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -27,9 +27,10 @@ public class VideoServiceImpl implements VideoService {
 	}
 
 	@Override
-	public Optional<VideoDto> findById(Integer id) {
+	public VideoDto findById(Integer id) {
 		
-		return videoRepository.findById(id).map(VideoMapper::convertToDto);
+		return videoRepository.findById(id).map(VideoMapper::convertToDto)
+				.orElseThrow(()-> new EntityNotFoundException("Aucun vidéo trouvé avec l'ID : " +id));
 	}
 
 	@Override

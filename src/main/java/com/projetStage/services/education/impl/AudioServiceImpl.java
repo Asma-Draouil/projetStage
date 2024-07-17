@@ -1,7 +1,6 @@
 package com.projetStage.services.education.impl;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -12,6 +11,7 @@ import com.projetStage.models.mappers.education.AudioMapper;
 import com.projetStage.repositories.education.AudioRepository;
 import com.projetStage.services.education.AudioService;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -28,9 +28,10 @@ public class AudioServiceImpl implements AudioService{
 	}
 
 	@Override
-	public Optional<AudioDto> findById(Integer id) {
+	public AudioDto findById(Integer id) {
 		
-		return audioRepository.findById(id).map(AudioMapper::convertToDto);
+		return audioRepository.findById(id).map(AudioMapper::convertToDto)
+				.orElseThrow(()-> new EntityNotFoundException("Aucun audio trouvé avec l'ID : " +id));
 	}
 
 	@Override

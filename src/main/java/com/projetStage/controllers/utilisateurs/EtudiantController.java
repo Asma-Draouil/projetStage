@@ -1,7 +1,6 @@
-package com.projetStage.controllers.education;
+package com.projetStage.controllers.utilisateurs;
 
 import java.util.List;
-
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,39 +10,40 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.projetStage.models.dto.education.CategorieDto;
-import com.projetStage.services.education.CategorieService;
+import com.projetStage.models.dto.utilisateurs.EtudiantDto;
+import com.projetStage.services.utilisateurs.EtudiantService;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/etudiants")
 @RequiredArgsConstructor
-public class CategorieController {
+public class EtudiantController {
 
-	private final CategorieService categorieService;
+	private final EtudiantService etudiantService;
 	
 	@PostMapping
-	public ResponseEntity<CategorieDto> save(@RequestBody CategorieDto categorieDto){
-		categorieService.save(categorieDto);
+	public ResponseEntity<EtudiantDto> save(@RequestBody EtudiantDto etudiantDto){
+		etudiantService.save(etudiantDto);
 		return ResponseEntity
 				.accepted()
 				.build();
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<CategorieDto> findById(@PathVariable Integer id){
-		return ResponseEntity.ok(categorieService.findById(id));
+	public ResponseEntity<EtudiantDto> findById(@PathVariable Integer id){
+		return ResponseEntity.ok(etudiantService.findById(id));
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<CategorieDto>> findAll(){
-		return ResponseEntity.ok(categorieService.findAll());
+	public ResponseEntity<List<EtudiantDto>> findAll(){
+		return ResponseEntity.ok(etudiantService.findAll());
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteById(@PathVariable Integer id){
-		categorieService.deleteById(id);
+	public ResponseEntity<EtudiantDto> deleteById(@PathVariable Integer id){
+		etudiantService.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
+	
 }

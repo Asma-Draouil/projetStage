@@ -1,7 +1,6 @@
 package com.projetStage.services.communication.impl;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -12,6 +11,7 @@ import com.projetStage.models.mappers.communication.CommentaireMapper;
 import com.projetStage.repositories.communication.CommentaireRepository;
 import com.projetStage.services.communication.CommentaireService;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -27,9 +27,10 @@ public class CommentaireServiceImpl implements CommentaireService{
 	}
 
 	@Override
-	public Optional<CommentaireDto> findById(Integer id) {
+	public CommentaireDto findById(Integer id) {
 	
-		return commentaireRepository.findById(id).map(CommentaireMapper::convertToDto);
+		return commentaireRepository.findById(id).map(CommentaireMapper::convertToDto)
+				.orElseThrow(()-> new EntityNotFoundException("Aucun commentaire trouvé avec l'ID : " +id));
 	}
 
 	@Override

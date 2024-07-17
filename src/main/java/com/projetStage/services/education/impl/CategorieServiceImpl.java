@@ -1,7 +1,6 @@
 package com.projetStage.services.education.impl;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import com.projetStage.models.dto.education.CategorieDto;
@@ -9,6 +8,8 @@ import com.projetStage.models.entities.education.Categorie;
 import com.projetStage.models.mappers.education.CategorieMapper;
 import com.projetStage.repositories.education.CategorieRepository;
 import com.projetStage.services.education.CategorieService;
+
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -24,9 +25,10 @@ public class CategorieServiceImpl implements CategorieService{
 	}
 
 	@Override
-	public Optional<CategorieDto> findById(Integer id) {
+	public CategorieDto findById(Integer id) {
 		
-		return categorieRepository.findById(id).map(CategorieMapper::convertToDto);
+		return categorieRepository.findById(id).map(CategorieMapper::convertToDto)
+				.orElseThrow(()-> new EntityNotFoundException("Aucune catégorie trouvée avec l'ID : " +id));
 	}
 
 	@Override

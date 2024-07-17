@@ -1,7 +1,6 @@
 package com.projetStage.services.communication.impl;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -12,6 +11,7 @@ import com.projetStage.models.mappers.communication.CertificatMapper;
 import com.projetStage.repositories.communication.CertificatRepository;
 import com.projetStage.services.communication.CertificatService;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -27,9 +27,10 @@ public class CertificatServiceImpl implements CertificatService {
 	}
 
 	@Override
-	public Optional<CertificatDto> findById(Integer id) {
+	public CertificatDto findById(Integer id) {
 		
-		return certifRepository.findById(id).map(CertificatMapper::convertToDto);
+		return certifRepository.findById(id).map(CertificatMapper::convertToDto)
+				.orElseThrow(()-> new EntityNotFoundException("Aucun certificat trouvé avec l'ID : " +id));
 	}
 
 	@Override

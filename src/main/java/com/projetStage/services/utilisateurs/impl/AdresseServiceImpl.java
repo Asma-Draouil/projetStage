@@ -1,7 +1,6 @@
 package com.projetStage.services.utilisateurs.impl;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -12,6 +11,7 @@ import com.projetStage.models.mappers.utilisateurs.AdresseMapper;
 import com.projetStage.repositories.utilisateurs.AdresseRepository;
 import com.projetStage.services.utilisateurs.AdresseService;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -27,9 +27,10 @@ public class AdresseServiceImpl implements AdresseService{
 	}
 
 	@Override
-	public Optional<AdresseDto> findById(Integer id) {
+	public AdresseDto findById(Integer id) {
 		
-		return adresseRepository.findById(id).map(AdresseMapper::convertToDto);
+		return adresseRepository.findById(id).map(AdresseMapper::convertToDto)
+				.orElseThrow(()-> new EntityNotFoundException("Aucune adresse trouvée avec l'ID : " +id));
 	}
 
 	@Override

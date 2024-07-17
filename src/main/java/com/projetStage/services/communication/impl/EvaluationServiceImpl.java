@@ -1,7 +1,6 @@
 package com.projetStage.services.communication.impl;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -12,6 +11,7 @@ import com.projetStage.models.mappers.communication.EvaluationMapper;
 import com.projetStage.repositories.communication.EvaluationRepository;
 import com.projetStage.services.communication.EvaluationService;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -27,9 +27,10 @@ public class EvaluationServiceImpl implements EvaluationService{
 	}
 
 	@Override
-	public Optional<EvaluationDto> findById(Integer id) {
+	public EvaluationDto findById(Integer id) {
 		
-		return evaluationRepository.findById(id).map(EvaluationMapper::convertToDto);
+		return evaluationRepository.findById(id).map(EvaluationMapper::convertToDto)
+				.orElseThrow(()-> new EntityNotFoundException("Aucune evaluation trouvée avec l'ID : " +id));
 	}
 
 	@Override

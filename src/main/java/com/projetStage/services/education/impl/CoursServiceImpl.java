@@ -15,6 +15,7 @@ import com.projetStage.models.mappers.education.CoursMapper;
 import com.projetStage.repositories.education.CoursRepository;
 import com.projetStage.services.education.CoursService;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -30,9 +31,10 @@ public class CoursServiceImpl implements CoursService{
 	}
 
 	@Override
-	public Optional<CoursDto> findById(Integer id) {
+	public CoursDto findById(Integer id) {
 	
-		return coursRepository.findById(id).map(CoursMapper::convertToDto);
+		return coursRepository.findById(id).map(CoursMapper::convertToDto)
+				.orElseThrow(()-> new EntityNotFoundException("Aucun cours trouvé avec l'ID : " +id));
 	}
 
 	@Override

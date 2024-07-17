@@ -1,7 +1,6 @@
 package com.projetStage.services.education.impl;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -12,6 +11,7 @@ import com.projetStage.models.mappers.education.DocumentMapper;
 import com.projetStage.repositories.education.DocumentRepository;
 import com.projetStage.services.education.DocumentService;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -27,9 +27,10 @@ public class DocumentServiceImpl implements DocumentService {
 	}
 
 	@Override
-	public Optional<DocumentDto> findById(Integer id) {
+	public DocumentDto findById(Integer id) {
 		
-		return documentRepository.findById(id).map(DocumentMapper::convertToDto);
+		return documentRepository.findById(id).map(DocumentMapper::convertToDto)
+				.orElseThrow(()-> new EntityNotFoundException("Aucun document trouvé avec l'ID : " +id));
 	}
 
 	@Override

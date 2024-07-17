@@ -1,7 +1,6 @@
 package com.projetStage.services.education.impl;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -12,6 +11,7 @@ import com.projetStage.models.mappers.education.ChapitreMapper;
 import com.projetStage.repositories.education.ChapitreRepository;
 import com.projetStage.services.education.ChapitreService;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -27,9 +27,10 @@ public class ChapitreServiceImpl implements ChapitreService {
 	}
 
 	@Override
-	public Optional<ChapitreDto> findById(Integer id) {
+	public ChapitreDto findById(Integer id) {
 		
-		return chapitreRepository.findById(id).map(ChapitreMapper::convertToDto);
+		return chapitreRepository.findById(id).map(ChapitreMapper::convertToDto)
+				.orElseThrow(()-> new EntityNotFoundException("Aucun chapitre trouvé avec l'ID : " +id));
 	}
 
 	@Override
