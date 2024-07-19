@@ -6,6 +6,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projetStage.models.entities.communication.Certificat;
+import com.projetStage.models.entities.communication.Paiement;
 import com.projetStage.models.entities.education.Cours;
 import com.projetStage.models.entities.utilisateurs.enums.TypeEtudiant;
 
@@ -32,9 +33,12 @@ public class EtudiantDto extends UtilisateurDto{
 
 	private String profession, domaine;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("etudiants")
 	private Set<Cours> cours = new HashSet<>();
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("etudiant")
 	private Set<Certificat> certificats = new HashSet<>();
+	
+	@JsonIgnoreProperties("etudiant")
+	private Set<Paiement> paiements = new HashSet<>();
 }

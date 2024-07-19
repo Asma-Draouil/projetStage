@@ -35,6 +35,6 @@ public class AdresseDto extends BaseEntityDto {
 	@NotEmpty
 	private String pays;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("adresse")
 	private Utilisateur utilisateur;
 }

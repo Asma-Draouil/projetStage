@@ -33,6 +33,6 @@ public class VideoDto extends BaseEntityDto {
 	@NotEmpty
 	private String url;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("videos")
 	private Chapitre chapitre;
 }

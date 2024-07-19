@@ -38,7 +38,7 @@ public class QuizDto extends BaseEntityDto {
 	
 	private boolean estReussi;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("quiz")
 	private Chapitre chapitre;
 	
 }

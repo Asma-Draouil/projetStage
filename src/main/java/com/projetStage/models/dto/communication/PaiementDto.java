@@ -2,8 +2,11 @@ package com.projetStage.models.dto.communication;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projetStage.models.entities.communication.enums.ModePaiement;
 import com.projetStage.models.entities.communication.enums.TypePaiement;
+import com.projetStage.models.entities.education.Cours;
+import com.projetStage.models.entities.utilisateurs.Etudiant;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -40,4 +43,9 @@ public class PaiementDto {
 	@Enumerated(EnumType.STRING)
 	private ModePaiement modePaiement;
 
+	@JsonIgnoreProperties("paiements")
+	private Etudiant etudiant;
+	
+	@JsonIgnoreProperties("paiement")
+	private Cours cours;
 }

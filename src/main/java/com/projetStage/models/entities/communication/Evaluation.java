@@ -11,7 +11,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,7 +36,9 @@ private String remarque;
 @JoinColumn(name = "coursId")
 private Cours cours;	
 
-@OneToOne(mappedBy = "evaluation")
+@ManyToOne(fetch = FetchType.LAZY)
+@OnDelete(action = OnDeleteAction.CASCADE)
+@JoinColumn(name = "utilisateurId")
 private Utilisateur utilisateur;
 
 }

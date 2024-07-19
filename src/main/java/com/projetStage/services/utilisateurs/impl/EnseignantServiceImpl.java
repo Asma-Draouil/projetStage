@@ -5,8 +5,10 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.projetStage.models.dto.education.CoursDto;
 import com.projetStage.models.dto.utilisateurs.EnseignantDto;
 import com.projetStage.models.entities.utilisateurs.Enseignant;
+import com.projetStage.models.mappers.education.CoursMapper;
 import com.projetStage.models.mappers.utilisateurs.EnseignantMapper;
 import com.projetStage.repositories.utilisateurs.EnseignantRepository;
 import com.projetStage.services.utilisateurs.EnseignantService;
@@ -53,6 +55,17 @@ public class EnseignantServiceImpl implements EnseignantService{
 	public void deleteAll() {
 		enseignantRepository.deleteAll();
 		
+	}
+
+	@Override
+	public EnseignantDto assignCoursToEnseignant(Integer idEnseignant, CoursDto coursDto) {
+		Enseignant enseignant = enseignantRepository.findById(idEnseignant)
+				.orElseThrow(()-> new EntityNotFoundException("Aucun enseignant trouvé avec l'ID : " +idEnseignant));		
+		if(enseignant != null) 
+		{
+			enseignant.setCours(CoursMapper.convertToEntity(coursDto));
+		}
+		return null;
 	}
 
 }

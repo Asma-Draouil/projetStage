@@ -12,6 +12,7 @@ import com.projetStage.models.BaseEntity;
 import com.projetStage.models.entities.communication.Certificat;
 import com.projetStage.models.entities.communication.Commentaire;
 import com.projetStage.models.entities.communication.Evaluation;
+import com.projetStage.models.entities.communication.Paiement;
 import com.projetStage.models.entities.utilisateurs.Enseignant;
 import com.projetStage.models.entities.utilisateurs.Etudiant;
 
@@ -93,6 +94,10 @@ cascade = {
 		inverseJoinColumns = @JoinColumn(name = "etudiantId")
 		)
 private Set<Etudiant> etudiants = new HashSet<>();
+
+@OneToOne(cascade = CascadeType.ALL)
+@JoinColumn(name = "paiementId")
+private Paiement paiement;
 
 
 }

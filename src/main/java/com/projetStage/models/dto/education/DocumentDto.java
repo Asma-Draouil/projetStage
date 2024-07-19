@@ -27,6 +27,6 @@ public class DocumentDto extends BaseEntityDto {
 	@NotEmpty
 	private String url;	
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("documents")
 	private Chapitre chapitre;
 }

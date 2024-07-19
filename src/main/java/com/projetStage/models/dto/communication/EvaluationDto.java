@@ -26,9 +26,9 @@ public class EvaluationDto extends BaseEntityDto {
 
 	private String remarque;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("evaluations")
 	private Cours cours;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("evaluation")
 	private Utilisateur utilisateur;
 }

@@ -34,6 +34,6 @@ public class AudioDto extends BaseEntityDto {
 	@NotEmpty
 	private String url;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("audios")
 	private Chapitre chapitre;
 }

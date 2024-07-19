@@ -33,6 +33,6 @@ public class EnseignantDto extends UtilisateurDto{
 
 	private int experience;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("enseignant")
 	private Set<Cours> cours = new HashSet<>();
 }

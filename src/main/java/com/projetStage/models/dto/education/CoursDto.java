@@ -10,6 +10,7 @@ import com.projetStage.models.BaseEntityDto;
 import com.projetStage.models.entities.communication.Certificat;
 import com.projetStage.models.entities.communication.Commentaire;
 import com.projetStage.models.entities.communication.Evaluation;
+import com.projetStage.models.entities.communication.Paiement;
 import com.projetStage.models.entities.education.Categorie;
 import com.projetStage.models.entities.education.Chapitre;
 import com.projetStage.models.entities.education.NiveauCours;
@@ -58,26 +59,27 @@ public class CoursDto extends BaseEntityDto {
 	@NotEmpty
 	private float prixCours;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("cours")
 	private Enseignant enseignant;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("cours")
 	private Set<Categorie> categories = new HashSet<>();
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("cours")
 	private Certificat certificat;	
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("cours")
 	private List<Commentaire> commentaires = new ArrayList<>();
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("cours")
 	private Set<Chapitre> chapitres = new HashSet<>();
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("cours")
 	private List<Evaluation> evaluations = new ArrayList<>();
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("cours")
 	private Set<Etudiant> etudiants = new HashSet<>();
 	
-	
+	@JsonIgnoreProperties("cours")
+	private Paiement paiement;
 }

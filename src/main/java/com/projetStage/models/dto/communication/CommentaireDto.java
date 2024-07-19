@@ -21,9 +21,9 @@ public class CommentaireDto extends BaseEntityDto{
 	@NotEmpty
 	private String contenu;	
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("commentaires")
 	private Cours cours;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("commentaires")
 	private Utilisateur utilisateur;
 }

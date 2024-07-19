@@ -29,6 +29,6 @@ public class MeetingDto extends BaseEntityDto{
 	@NotEmpty
 	private Date dateDebut, dateFin;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("meetings")
 	private Chapitre chapitre;
 }

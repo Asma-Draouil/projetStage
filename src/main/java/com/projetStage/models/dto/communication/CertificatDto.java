@@ -31,9 +31,9 @@ public class CertificatDto {
 	@NotEmpty
 	private Date datOptention;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("certificat")
 	private Cours cours;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("certificats")
 	private Etudiant etudiant;
 }

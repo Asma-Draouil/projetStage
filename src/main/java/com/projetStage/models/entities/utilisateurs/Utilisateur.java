@@ -59,9 +59,8 @@ private Roles roles;
 @JoinColumn(name = "adresseId")
 private Adresse adresse;
 
-@OneToOne(cascade = CascadeType.ALL)
-@JoinColumn(name = "evaluationId")
-private Evaluation evaluation;
+@OneToMany(mappedBy = "utilisateur")
+private List<Evaluation> evaluations;
 
 @OneToMany(mappedBy = "utilisateur")
 List<Commentaire> commentaires = new ArrayList<>() ;

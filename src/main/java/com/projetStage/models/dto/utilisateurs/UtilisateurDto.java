@@ -52,9 +52,9 @@ public class UtilisateurDto extends BaseEntityDto {
 	@Enumerated(EnumType.STRING)
 	private Roles roles;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("utilisateur")
 	private Adresse adresse;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("utilisateur")
 	private Evaluation evaluation;
 }

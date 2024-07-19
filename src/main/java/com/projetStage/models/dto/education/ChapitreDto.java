@@ -36,21 +36,21 @@ public class ChapitreDto extends BaseEntityDto {
 	@NotEmpty
 	private int nombreHeure;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("chapitres")
 	private Cours cours;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("chapitre")
 	private Set<Meeting> meetings = new HashSet<>();
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("chapitre")
 	private Set<Video> videos = new HashSet<>();
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("chapitre")
 	private Set<Audio> audios = new HashSet<>();
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("chapitre")
 	private Set<Document> documents = new HashSet<>();
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("chapitre")
 	private Quiz quiz;
 }

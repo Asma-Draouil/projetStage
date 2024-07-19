@@ -26,6 +26,6 @@ public class CategorieDto extends BaseEntityDto {
 	@NotEmpty
 	private String description;
 	
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("categories")
 	private Set<Cours> cours = new HashSet<>();
 }
