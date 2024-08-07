@@ -1,15 +1,16 @@
 package com.projetStage.services.utilisateurs.impl;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.projetStage.models.dto.education.CoursDto;
 import com.projetStage.models.dto.utilisateurs.EnseignantDto;
+import com.projetStage.models.entities.education.Cours;
 import com.projetStage.models.entities.utilisateurs.Enseignant;
-import com.projetStage.models.mappers.education.CoursMapper;
 import com.projetStage.models.mappers.utilisateurs.EnseignantMapper;
+import com.projetStage.repositories.education.CoursRepository;
 import com.projetStage.repositories.utilisateurs.EnseignantRepository;
 import com.projetStage.services.utilisateurs.EnseignantService;
 
@@ -21,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 public class EnseignantServiceImpl implements EnseignantService{
 	
 	private final EnseignantRepository enseignantRepository;
+	private final CoursRepository coursRepository;
 	
 	@Override
 	public EnseignantDto save(EnseignantDto enseignantDto) {
@@ -58,14 +60,20 @@ public class EnseignantServiceImpl implements EnseignantService{
 	}
 
 	@Override
-	public EnseignantDto assignCoursToEnseignant(Integer idEnseignant, CoursDto coursDto) {
+	public EnseignantDto assignCoursToEnseignant(Integer idEnseignant, Integer idCours) {
+		
 		Enseignant enseignant = enseignantRepository.findById(idEnseignant)
-				.orElseThrow(()-> new EntityNotFoundException("Aucun enseignant trouvé avec l'ID : " +idEnseignant));		
-		if(enseignant != null) 
+				.orElseThrow(()-> new EntityNotFoundException("Aucun enseignant trouvé avec l'ID : " +idEnseignant));	
+		Cours cours = coursRepository.findById(idCours)
+				.orElseThrow(()-> new EntityNotFoundException("Aucun cours trouvé avec l'ID : " +idCours));
+		
+		if(enseignant != null && cours != null) 
 		{
-			enseignant.setCours(CoursMapper.convertToEntity(coursDto));
+			Set<Cours> setDeCours = enseignant.getCours();
+			setDeCours.add(cours);
+			enseignant.setCours(setDeCours);
 		}
-		return null;
+		return EnseignantMapper.convertToDto(enseignantRepository.save(enseignant));
 	}
 
 }

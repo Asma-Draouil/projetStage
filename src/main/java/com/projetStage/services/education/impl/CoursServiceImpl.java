@@ -1,7 +1,6 @@
 package com.projetStage.services.education.impl;
 
-import java.util.List;
-import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -57,45 +56,47 @@ public class CoursServiceImpl implements CoursService{
 	}
 
 	@Override
-	public Optional<List<CoursDto>> findByTitreContains(String titre) {
-		
-		return Optional.empty();
-	}
-
-	@Override
-	public Optional<List<CoursDto>> findByDescriptionContains(String description) {
-		
-		return Optional.empty();
-	}
-
-	@Override
-	public Optional<List<CoursDto>> findByPrixCoursGreaterThan(float prix) {
-		
-		return Optional.empty();
-	}
-
-	@Override
-	public Optional<List<CoursDto>> findByPrixCoursLessThan(float prix) {
+	public Page<CoursDto> findByTitreContains(String titre, Pageable pageable) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return null;
 	}
 
 	@Override
-	public Optional<List<CoursDto>> findByCategories(CategorieDto categorieDto) {
+	public Page<CoursDto> findByDescriptionContains(String description, Pageable pageable) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return null;
 	}
 
 	@Override
-	public Optional<List<CoursDto>> findByEnseignant(EnseignantDto enseignantDto) {
+	public Page<CoursDto> findByPrixCoursGreaterThan(float prix, Pageable pageable) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return null;
 	}
 
 	@Override
-	public Optional<List<CoursDto>> findByEvaluations(EvaluationDto evaluationDto) {
+	public Page<CoursDto> findByPrixCoursLessThan(float prix, Pageable pageable) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return null;
 	}
+
+	@Override
+	public Page<CoursDto> findByCategories(CategorieDto categorieDto, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Page<CoursDto> findByEnseignant(EnseignantDto enseignantDto, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Page<CoursDto> findByEvaluations(EvaluationDto evaluationDto, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }

@@ -1,8 +1,5 @@
 package com.projetStage.services.education;
 
-import java.util.List;
-
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import com.projetStage.models.dto.communication.EvaluationDto;
@@ -18,12 +15,13 @@ public CoursDto findById(Integer id);
 public Page<CoursDto> findAll(Pageable pageable);
 public void deleteById(Integer id);
 public void deleteAll();
-public List<CoursDto> findByTitreContains(String titre);
-public List<CoursDto> findByDescriptionContains(String description);
-public List<CoursDto> findByPrixCoursGreaterThan(float prix);
-public List<CoursDto> findByPrixCoursLessThan(float prix);
-public List<CoursDto> findByCategories(CategorieDto categorieDto);
-public List<CoursDto> findByEnseignant(EnseignantDto enseignantDto);
-public List<CoursDto> findByEvaluations(EvaluationDto evaluationDto);
+public Page<CoursDto> findByTitreContains(String titre,Pageable pageable );
+public Page<CoursDto> findByDescriptionContains(String description, Pageable pageable);
+public Page<CoursDto> findByPrixCoursGreaterThan(float prix, Pageable pageable);
+public Page<CoursDto> findByPrixCoursLessThan(float prix, Pageable pageable);
+public Page<CoursDto> findByCategories(CategorieDto categorieDto, Pageable pageable);
+public Page<CoursDto> findByEnseignant(EnseignantDto enseignantDto, Pageable pageable);
+public Page<CoursDto> findByEvaluations(EvaluationDto evaluationDto, Pageable pageable);
+
 	
 }

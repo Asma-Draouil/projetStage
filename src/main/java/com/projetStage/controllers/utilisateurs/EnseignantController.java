@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,5 +44,13 @@ public class EnseignantController {
 	public ResponseEntity<Void> deleteById(@PathVariable Integer id){
 		enseignantService.deleteById(id);
 		return ResponseEntity.ok().build();
+	}
+	
+	@PutMapping("/{idEnseignant}/cours/{}idCours")
+	public ResponseEntity<EnseignantDto> assignCoursToEnseignant(
+			@PathVariable Integer idEnseignant,
+			@PathVariable Integer idCours
+			){
+		return ResponseEntity.ok(enseignantService.assignCoursToEnseignant(idEnseignant, idCours));
 	}
 }
