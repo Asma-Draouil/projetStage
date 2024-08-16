@@ -5,9 +5,11 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.projetStage.models.dto.communication.CommentaireDto;
 import com.projetStage.models.dto.utilisateurs.AdresseDto;
 import com.projetStage.models.dto.utilisateurs.UtilisateurDto;
 import com.projetStage.models.entities.utilisateurs.Utilisateur;
+import com.projetStage.models.mappers.communication.CommentaireMapper;
 import com.projetStage.models.mappers.utilisateurs.AdresseMapper;
 import com.projetStage.models.mappers.utilisateurs.UtilisateurMapper;
 import com.projetStage.repositories.utilisateurs.UtilisateurRepository;
@@ -60,6 +62,18 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 			utilisateur.setAdresse(AdresseMapper.convertToEntity(adresseDto));
 			
 			return UtilisateurMapper.convertToDto(userRepository.save(utilisateur));
+		}
+		return null;
+	}
+
+	@Override
+	public UtilisateurDto assignCommentaireToUtilisateur(Integer idUtilisateur, CommentaireDto commentaireDto) {
+		Utilisateur utilisateur = userRepository.findById(idUtilisateur)
+				.orElseThrow(()-> new EntityNotFoundException("Aucun utilisateur trouvé avec l'ID : " +idUtilisateur));
+		
+		if(utilisateur != null) 
+		{
+			utilisateur.setCommentaires(CommentaireMapper.convertToEntity(commentaireDto));
 		}
 		return null;
 	}
